@@ -50,6 +50,22 @@
 	 } else {
 	 	echo "<h3>No one is currently registered.</h3>";
 	 }
+
+	$sql_deselect = "SELECT count(*) FROM registration_tbl where registration_tbl.name ='mathieu'";
+	$stmt = $conn->query($sql_deselect);
+	$registrantes = $stmt->fetchAll(); 
+
+	if(count($registrantes) > 0) {
+	 	echo "<h2>Dossier traités:</h2>";
+	 	foreach($registrants as $registrant) {
+	 		echo "<h3>".$registrant[0]."</h3>";
+	     }
+	 } else {
+	 	echo "<h3>No one is currently registered.</h3>";
+	 }
+
+
+
 ?>
  </body>
  </html>	
