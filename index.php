@@ -25,18 +25,14 @@
  </form>
  <?php
  // DB connection info
- $host = "tcp:bddintern.database.windows.net";
- $user = "superuser";
- $pwd = "Pa55w.rd123";
- $db = "bddintern";
- // Connect to database.
- try {
- 	$conn = new PDO( "sqlsrv:Server= $host ; Database = $db ", $user, $pwd);
- 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
- }
- catch(Exception $e){
- 	die(var_dump($e));
- }
+	try {
+	    $conn = new PDO("sqlsrv:server = tcp:bddintern.database.windows.net,1433; Database = bddintern", "superuser", "Pa55w.rd123");
+	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	catch (PDOException $e) {
+	    print("Error connecting to SQL Server.");
+	    die(print_r($e));
+	}
 
  if(!empty($_POST)) {
  try {
