@@ -25,7 +25,7 @@
  </form>
  <?php
 	 // DB connection info
-	 $host = "tcp:bddintern.database.windows.net";
+	 $host = "tcp:bddintern.database.windows.net,1433";
 	 $user = "superuser";
 	 $pwd = "Pa55w.rd123";
 	 $db = "bddintern";
