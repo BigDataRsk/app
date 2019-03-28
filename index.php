@@ -24,13 +24,7 @@
        <input type="submit" name="submit" value="Submit" />
  </form>
  <?php
-
- ?>
- </body>
- </html>	
-
-
-  // DB connection info
+ // DB connection info
  $host = "tcp:bddintern.database.windows.net";
  $user = "superuser";
  $pwd = "Pa55w.rd123";
@@ -83,3 +77,9 @@
  } else {
  	echo "<h3>No one is currently registered.</h3>";
  }
+ ?>
+ </body>
+ </html>	
+
+
+ 
