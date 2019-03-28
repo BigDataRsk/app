@@ -17,7 +17,6 @@
  </head>
  <body>
  <h1>SUPERVISION</h1>
- <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
 
 <?php 
 	 // DB connection info
@@ -48,13 +47,13 @@
 	 }
 
 	$sql_deselect = "SELECT count(*) FROM registration_tbl where registration_tbl.name ='mathieu'";
-	$stmt = $conn->query($sql_deselect);
-	$registrantes = $stmt->fetchAll(); 
+	$stmte = $conn->query($sql_deselect);
+	$registrantes = $stmte->fetchAll(); 
 
 	if(count($registrantes) > 0) {
 	 	echo "<h2>Dossier traités:</h2>";
-	 	foreach($registrants as $registrant) {
-	 		echo "<h3>".$registrant[0]."</h3>";
+	 	foreach($registrantes as $registrants) {
+	 		echo "<h3>".$registrants[0]."</h3>";
 	     }
 	 } else {
 	 	echo "<h3>No one is currently registered.</h3>";
