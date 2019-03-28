@@ -23,7 +23,7 @@
        Email <input type="text" name="email" id="email"/></br>
        <input type="submit" name="submit" value="Submit" />
  </form>
- <?php
+<?php 
 	 // DB connection info
 	 $host = "tcp:bddintern.database.windows.net,1433";
 	 $user = "superuser";
@@ -38,46 +38,19 @@
 	 	die(var_dump($e));
 	 }
 
-	 if(!empty($_POST)) {
-	 try {
-	 	$name = $_POST['name'];
-	 	$email = $_POST['email'];
-	 	$date = date("Y-m-d");
-	 	// Insert data
-	 	$sql_insert = "INSERT INTO registration_tbl (name, email, date) 
-	 				   VALUES (?,?,?)";
-	 	$stmt = $conn->prepare($sql_insert);
-	 	$stmt->bindValue(1, $name);
-	 	$stmt->bindValue(2, $email);
-	 	$stmt->bindValue(3, $date);
-	 	$stmt->execute();
-	 }
-	 catch(Exception $e) {
-	 	die(var_dump($e));
-	 }
-	 echo "<h3>Your're registered!</h3>";
-	 }
+	$sql_select = "SELECT count(*) FROM registration_tbl where registration_tbl.name ='ok'";
+	$stmt = $conn->query($sql_select);
+	$registrants = $stmt->fetchAll(); 
 
-
-	 $sql_select = "SELECT * FROM registration_tbl";
-	 $stmt = $conn->query($sql_select);
-	 $registrants = $stmt->fetchAll(); 
-	 if(count($registrants) > 0) {
-	 	echo "<h2>People who are registered:</h2>";
-	 	echo "<table>";
-	 	echo "<tr><th>Name</th>";
-	 	echo "<th>Email</th>";
-	 	echo "<th>Date</th></tr>";
+	if(count($registrants) > 0) {
+	 	echo "<h2>Dossier non traités:</h2>";
 	 	foreach($registrants as $registrant) {
-	 		echo "<tr><td>".$registrant['name']."</td>";
-	 		echo "<td>".$registrant['email']."</td>";
-	 		echo "<td>".$registrant['date']."</td></tr>";
+	 		echo "<h3>".$registrant['name']."</h3>";
 	     }
-	  	echo "</table>";
 	 } else {
 	 	echo "<h3>No one is currently registered.</h3>";
 	 }
- ?>
+?>
  </body>
  </html>	
 
