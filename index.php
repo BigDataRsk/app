@@ -45,7 +45,7 @@
 	if(count($registrants) > 0) {
 	 	echo "<h2>Dossier non traités:</h2>";
 	 	foreach($registrants as $registrant) {
-	 		echo "<h3>".$registrant['name']."</h3>";
+	 		echo "<h3>".$registrant."</h3>";
 	     }
 	 } else {
 	 	echo "<h3>No one is currently registered.</h3>";
